@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Page{% endblock title %}
+
+{% block blogactive %} active {% endblock blogactive %}
+
+{% block body %}
+
+
+<main class="container my-3">
+
+    <h2>Search Results : </h2>
+    {% if posts|length < 1 %}
+    <p>No search results</p>
+
+    Your search result : <b>{{query}}</b> - did not match any document. <br>
+    suggestions : <br>
+    Try diffrent keywords
+        
+    {% endif %}
+{% for post in posts %}
+<div class="row mb-2">
+  <div class="col-md-6">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">{{ post.author }}</strong>
+        <h3 class="mb-0">{{ post.title }}</h3>
+        <p class="card-text mb-auto">{{ post.content | truncatechars:400 }}</p>
+        <a href="/blog/{{ post.slug }}" class="stretched-link">Continue reading</a>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+
+</main>
+{% endblock body %}

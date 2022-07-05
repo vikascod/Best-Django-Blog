@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block contactactive %} active {% endblock contactactive %}
+
+{% block body %}
+    <div class="container my-3">
+        <h1 style="background-color: firebrick; text-align: center;" class="py-2">Welcome to Vik Blog</h1>
+        <form action="/contact" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="name" class="form-label">Username</label>
+              <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" name="phone" id="phone" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">How we can help your?</label>
+              <textarea name="content" id="content" class="form-control" rows="5"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+{% endblock body %}

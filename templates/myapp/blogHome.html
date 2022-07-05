@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}BlogHome{% endblock title %}
+
+{% block blogactive %} active {% endblock blogactive %}
+
+{% block body %}
+
+
+<main class="container my-3">
+<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+  <div class="col-md-6 px-0">
+    <h1 class="display-4 fst-italic">Vik Star</h1>
+    <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+    <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
+  </div>
+</div>
+
+{% for post in posts %}
+<div class="row mb-2">
+  <div class="col-md-6">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">{{ post.author }}</strong>
+        <h3 class="mb-0"> <a href="/blog/{{ post.slug }}"></a>{{ post.title }}</h3>
+        <p class="card-text mb-auto">{{ post.content | truncatechars:400 }}</p>
+        <a href="/blog/{{ post.slug }}" class="stretched-link">Continue reading</a>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+
+</main>
+{% endblock body %}
